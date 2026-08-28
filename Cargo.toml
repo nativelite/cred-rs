@@ -1,0 +1,18 @@
+[package]
+name = "cred"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Store, read, and delete named secrets in the operating system's native credential vault, via the crate's own FFI, using only the Rust standard library."
+license = "MIT"
+repository = "https://github.com/nativelite/cred-rs"
+keywords = ["credentials", "keychain", "keyring", "secrets", "nativelite"]
+categories = ["authentication", "os"]
+
+# nativelite core rule: ZERO third-party dependencies. Do not add to this.
+# (The OS vault is reached through our own extern blocks, no keyring crate.)
+[dependencies]
+
+[lib]
+name = "cred"
+path = "src/lib.rs"
