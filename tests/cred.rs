@@ -1,6 +1,6 @@
 //! Integration tests for `cred`.
 //!
-//! On Windows these run against the *real* Credential Manager — every test
+//! On Windows these run against the *real* Credential Manager; every test
 //! uses a unique service namespace and deletes what it wrote. On non-macOS
 //! Unix (CI's ubuntu) the honest `Unsupported` contract is asserted
 //! instead. macOS has no runner yet; its backend is compile-checked only.
