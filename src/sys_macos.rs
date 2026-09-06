@@ -1,10 +1,10 @@
 //! macOS Keychain, via our own Security.framework externs. Secrets are
 //! generic-password items keyed by `service`/`account`.
 //!
-//! Uses the classic `SecKeychain*` C API — deprecated by Apple since 10.10
+//! Uses the classic `SecKeychain*` C API, deprecated by Apple since 10.10
 //! but stable, functional, and a fraction of the FFI surface of the
 //! CoreFoundation-based `SecItem*` API. Compile-checked in CI; not yet
-//! exercised by a macOS runner — treat as beta until it is.
+//! exercised by a macOS runner; treat as beta until it is.
 
 use std::ffi::c_void;
 use std::io;
@@ -176,6 +176,6 @@ pub fn entries(_service: &str) -> io::Result<Vec<String>> {
     Err(io::Error::new(
         io::ErrorKind::Unsupported,
         "listing keychain items needs the SecItemCopyMatching FFI surface; \
-         planned — keep an index entry if you need portable listing",
+         planned. Keep an index entry if you need portable listing",
     ))
 }

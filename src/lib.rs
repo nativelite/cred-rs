@@ -1,10 +1,10 @@
-//! cred — named secrets in the operating system's native credential vault,
+//! cred: named secrets in the operating system's native credential vault,
 //! on the Rust standard library alone. Zero dependencies, including no
 //! `libc`/`windows`/`security-framework` crates: the OS boundary is this
 //! crate's own small `extern` blocks.
 //!
 //! One concern: **bytes under names, in the vault the OS already guards.**
-//! No key formats, no vendor semantics, no networking, and — deliberately —
+//! No key formats, no vendor semantics, no networking, and, deliberately,
 //! no file fallback: a platform without a supported vault returns
 //! [`std::io::ErrorKind::Unsupported`] instead of silently writing plaintext
 //! to disk.
@@ -22,7 +22,7 @@
 //! | --- | --- | --- |
 //! | Windows | Credential Manager (`CredWriteW`/`CredReadW`/... in advapi32) | tested against the real vault |
 //! | macOS | Keychain (`SecKeychain*` generic-password C API) | compile-checked; not yet CI-exercised |
-//! | Linux / other Unix | Secret Service needs D-Bus — planned | `Unsupported` error, by design |
+//! | Linux / other Unix | Secret Service needs D-Bus (planned) | `Unsupported` error, by design |
 //!
 //! Secrets are grouped by a `service` string (your application's namespace)
 //! and identified by a `name` within it. On Windows the vault entry is the

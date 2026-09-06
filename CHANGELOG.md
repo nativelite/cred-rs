@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-08-28
 
 ### Added
-- `cred::set` / `get` / `delete` / `entries` — named secrets under a
+- `cred::set` / `get` / `delete` / `entries`: named secrets under a
   service namespace, stored in the OS-native credential vault via the
   crate's own FFI (no `keyring`/`libc`/`windows`/`security-framework`
   crates).
@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - macOS backend: Keychain generic passwords via the classic `SecKeychain*`
   C API (compile-checked; no CI runner yet). `entries` unsupported there
   pending the `SecItem*` FFI surface.
-- Non-macOS Unix: honest `ErrorKind::Unsupported` on every call — Secret
+- Non-macOS Unix: honest `ErrorKind::Unsupported` on every call; Secret
   Service needs D-Bus (planned). **No plaintext file fallback, by design.**
 - Input validation (`InvalidInput` before any OS call): non-empty
   service/name, no `/`/NUL/control characters, `MAX_SECRET` (2560-byte)
